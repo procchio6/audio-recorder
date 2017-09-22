@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 import Clip from './Clip'
 import ClipsAdapter from '../adapters/ClipsAdapter';
+import Recorder from './Recorder';
 
-class ClipsList extends Component {
+class ClipsContainer extends Component {
 
   state = {
     clips: []
   }
-
 
   componentDidMount() {
     ClipsAdapter.getClips().then( clips => {
@@ -25,6 +25,12 @@ class ClipsList extends Component {
     })
   }
 
+  handleClipSave = (clip) => {
+    let clips = this.state.clips.slice()
+    clips.unshift(clip)
+    this.setState({ clips })
+  }
+
   render() {
     let Clips = this.state.clips.map( clip => (
       <Clip
@@ -38,6 +44,7 @@ class ClipsList extends Component {
 
     return (
       <div>
+        <Recorder onSave={this.handleClipSave}/>
         <h1>Clips</h1>
         {Clips}
       </div>
@@ -45,4 +52,4 @@ class ClipsList extends Component {
   }
 }
 
-export default ClipsList;
+export default ClipsContainer;

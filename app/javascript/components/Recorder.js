@@ -41,8 +41,10 @@ class Recorder extends Component {
     let formData = new FormData()
     formData.append('title', this.state.title)
     formData.append('audio_file', this.state.audioClip)
-    ClipsAdapter.createClip(formData)
-    this.setState({audioClip: null})
+    ClipsAdapter.createClip(formData).then( (clip) => {
+      this.props.onSave(clip)
+      this.setState({audioClip: null})
+    })
   }
 
   startRecording = () => {

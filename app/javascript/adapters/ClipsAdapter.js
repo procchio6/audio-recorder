@@ -11,7 +11,7 @@ export default class ClipsAdapter {
     return fetch(ROOT_URL + '/clips', {
       method: 'POST',
       body: formData
-    })
+    }).then(resp => resp.json())
   }
 
   static deleteClip(clipId) {
