@@ -13,6 +13,9 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore dotenv file
+.env
+
 /node_modules
 /yarn-error.log
 
