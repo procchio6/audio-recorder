@@ -7,14 +7,14 @@ export default class ClipsAdapter {
     return fetch(ROOT_URL + '/clips').then(resp => resp.json())
   }
 
-  static create(formData) {
+  static createClip(formData) {
     return fetch(ROOT_URL + '/clips', {
       method: 'POST',
       body: formData
     })
   }
 
-  static delete(clipId) {
+  static deleteClip(clipId) {
     return fetch(ROOT_URL + `/clips/${clipId}`, {
       method: 'DELETE'
     })

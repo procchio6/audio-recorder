@@ -3,7 +3,7 @@ class ClipsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @clips = Clip.all
+    @clips = Clip.all.order(created_at: :desc)
     render json: @clips
   end
 

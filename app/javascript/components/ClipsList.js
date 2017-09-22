@@ -12,13 +12,12 @@ class ClipsList extends Component {
 
   componentDidMount() {
     ClipsAdapter.getClips().then( clips => {
-      console.log(clips)
       this.setState({clips: clips})
     })
   }
 
   handleDelete(clipId) {
-    ClipsAdapter.delete(clipId).then( resp => {
+    ClipsAdapter.deleteClip(clipId).then( resp => {
       let indexToDelete = this.state.clips.findIndex( clip => clip.id === clipId)
       this.setState({
         clips: this.state.clips.slice(0, indexToDelete).concat(this.state.clips.slice(indexToDelete+1))
@@ -38,7 +37,10 @@ class ClipsList extends Component {
     ))
 
     return (
-      <div>{Clips}</div>
+      <div>
+        <h1>Clips</h1>
+        {Clips}
+      </div>
     );
   }
 }

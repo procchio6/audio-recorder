@@ -7,7 +7,6 @@ import Recorder from './components/Recorder';
 class App extends Component {
 
   render() {
-    console.log(process.env.ROOT_URL);
     return (
       <div>
         <Recorder />
