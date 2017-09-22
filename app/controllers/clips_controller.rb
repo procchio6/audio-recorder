@@ -12,7 +12,6 @@ class ClipsController < ApplicationController
   end
 
   def create
-    byebug
     @clip = Clip.new(clip_params)
 
     if @clip.save
