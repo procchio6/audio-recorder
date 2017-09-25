@@ -45,10 +45,12 @@ class ClipsContainer extends Component {
     return (
       <div>
         <Recorder onSave={this.handleClipSave}/>
-        <h1>Clips</h1>
-        {
-          Clips.length > 0 ? Clips : <p>There are no audio clips to display!</p>
-        }
+        <div className='clips-list'>
+          <h1>Clips</h1>
+          {
+            Clips.length > 0 ? Clips : <p>There are no audio clips to display!</p>
+          }
+        </div>
       </div>
     );
   }

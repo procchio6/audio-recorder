@@ -7,7 +7,7 @@ import Recorder from './components/Recorder';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className='container'>
         <ClipsContainer />
       </div>
     );

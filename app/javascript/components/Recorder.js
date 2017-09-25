@@ -11,14 +11,12 @@ class Recorder extends Component {
   }
 
   componentDidMount() {
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia
-    navigator.getUserMedia(
-      {audio: true},
-      this.onGetUserMedia.bind(this),
-      function (error) {
-        console.log(error)
-      }
-    )
+    navigator.mediaDevices.getUserMedia({
+      audio: true
+    })
+    .then( stream => {
+      this.onGetUserMedia(stream)
+    })
   }
 
   onGetUserMedia(stream) {
@@ -33,7 +31,7 @@ class Recorder extends Component {
   }
 
   handleStopRecording = (e) => {
-    this.setState({audioClip : new Blob(this.chunks, { 'type' : 'audio/ogg; codecs=opus' })})
+    this.setState({audioClip : new Blob(this.chunks)})
     this.chunks = []
   }
 
@@ -43,38 +41,41 @@ class Recorder extends Component {
     formData.append('audio_file', this.state.audioClip)
     ClipsAdapter.createClip(formData).then( (clip) => {
       this.props.onSave(clip)
-      this.setState({audioClip: null})
+      this.setState({
+        audioClip: null,
+        title: ''
+      })
     })
   }
 
   startRecording = () => {
     this.setState({ recording: true })
-    this.mediaRecorder.start();
+    this.mediaRecorder.start()
   }
 
   stopRecording = () => {
     this.setState({ recording: false })
-    this.mediaRecorder.stop();
+    this.mediaRecorder.stop()
   }
 
   render() {
     return (
-      <div>
+      <div className='recorder'>
         {
           this.state.recording ?
-          <button onClick={this.stopRecording}>Stop</button>
+          <button className='btn-stop' onClick={this.stopRecording}></button>
           :
-          <button onClick={this.startRecording}>Record</button>
+          <button className='btn-record' onClick={this.startRecording}></button>
         }
         {
           (this.state.audioClip && !this.state.recording) &&
-          <div>
-            <button onClick={this.handleSave}>Save</button>
+          <div className='recorder-save'>
             <input
               value={this.state.title}
               onChange={(e) => this.setState({title: e.target.value})}
               placeholder='Title'
             />
+            <button onClick={this.handleSave}>Save</button>
           </div>
         }
 

@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+body {
+  margin: 0px;
+  font-family: 'Work Sans', sans-serif;
+}
+
+header {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0px;
+  padding: 12px;
+}

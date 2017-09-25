@@ -1,3 +1,78 @@
 // Place all the styles related to the clips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-record {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 5px solid black;
+  border-radius: 50%;
+  background-color: red;
+  margin: 0px auto;
+  padding: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-decoration: none;
+}
+
+.btn-record:hover {
+  background-color: darken(red, 10%);
+}
+
+.btn-stop {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 5px solid black;
+  border-radius: 5px;
+  background-color: grey;
+  margin: 0px auto;
+  padding: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-stop:hover {
+  background-color: darken(grey, 10%)
+}
+
+.recorder {
+  padding: 20px 20px 0px 20px;
+  button:focus {outline:0;}
+  button:hover {cursor: pointer;}
+}
+
+.recorder-save {
+  width: 33%;
+  margin: 12px auto;
+
+  @media screen and (max-width: 992px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 8px 0px;
+    font-size: 16px;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px 0px;
+    font-size: 16px;
+  }
+}
+
+.clips-list {
+  padding: 0px 20px;
+}
