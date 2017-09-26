@@ -8,7 +8,7 @@
   height: 80px;
   border: 5px solid black;
   border-radius: 50%;
-  background-color: red;
+  background-color: #EC5656;
   margin: 0px auto;
   padding: 0px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -16,7 +16,7 @@
 }
 
 .btn-record:hover {
-  background-color: darken(red, 10%);
+  background-color: darken(#EC5656, 10%);
 }
 
 .btn-stop {
@@ -75,4 +75,27 @@
 
 .clips-list {
   padding: 0px 20px;
+}
+
+.btn-delete {
+  border: none;
+  background-color: #EC5656;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 8.5px;
+  position: relative;
+  bottom: 12px;
+  left: 12px;
+  width: 32px;
+  border-radius: 50%;
+
+  &:focus {outline:0;}
+  &:hover {
+    background-color: darken(#EC5656, 10%);
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 375px) {
+    position: static;
+  }
 }
